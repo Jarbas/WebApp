@@ -13,6 +13,9 @@ namespace Rafitec.Cloud.Portal.Dominio.Entidades
         [Key, Column("COD_USUARIO")]
         public int idUsuario { get; set; }
 
+     //   [Column("COD_MATRICULA_SENIOR")]
+     //   public int idMatriculaSenior { get; set; }
+
         [Column("COD_EMPRESA")]
         public int idEmpresa { get; set; }
 

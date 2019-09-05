@@ -10,3 +10,8 @@ D:\Rafitec\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.csproj.Cor
 D:\Rafitec\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.dll
 D:\Rafitec\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.pdb
 D:\Rafitec\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.csprojAssemblyReference.cache
+D:\Jarbas\Projects\WebApp\Rafitec.Cloud.Utils\bin\Release\Rafitec.Cloud.Utils.dll
+D:\Jarbas\Projects\WebApp\Rafitec.Cloud.Utils\bin\Release\Rafitec.Cloud.Utils.pdb
+D:\Jarbas\Projects\WebApp\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.csproj.CoreCompileInputs.cache
+D:\Jarbas\Projects\WebApp\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.dll
+D:\Jarbas\Projects\WebApp\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.pdb

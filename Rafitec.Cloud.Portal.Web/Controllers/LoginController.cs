@@ -10,7 +10,6 @@ using System.Web.Security;
 
 namespace Rafitec.Cloud.Portal.Web.Controllers
 {
-
     public class LoginController : Controller
     {
         private Repositorio<Usuario> _repositorio;
@@ -46,6 +45,24 @@ namespace Rafitec.Cloud.Portal.Web.Controllers
                 //else AtualizarTentativaErroLogin();
             }
             CarregarViewBagErroLogin("E-mail ou Senha Invalida");
+            return Login();
+        }
+
+        [HttpPost]
+        public ActionResult LoginCodigo(Usuario login)
+        {
+
+            var teste = login.idUsuario;
+            CarregarUsuarioBancoDeDados(login);
+            if (ExisteUsuarioBancoDeDados())
+            {
+                if (ValidarSenha(login))
+                {
+                    AutenticarUsuario();
+                    return RedirectToAction("App", "Dashboard");
+                }
+            }
+            CarregarViewBagErroLogin("Código Invalido");
             return Login();
         }
 
@@ -104,6 +121,13 @@ namespace Rafitec.Cloud.Portal.Web.Controllers
              _repositorio = new Repositorio<Usuario>();
             var useres = _repositorio.Get;
             _usuarioDb = useres.FirstOrDefault(u => (u.Email == usuario.Email || u.Login == usuario.Email) && (u.Status == Status.Ativo));
+        }
+
+        private void CarregarCodigoUsuarioBancoDeDados(Usuario usuario)
+        {
+            _repositorio = new Repositorio<Usuario>();
+            var users = _repositorio.Get;
+            _usuarioDb = users.FirstOrDefault(u => ((u.idUsuario == usuario.idUsuario)  && (u.Status == Status.Ativo)));
         }
 
         [HttpGet]
