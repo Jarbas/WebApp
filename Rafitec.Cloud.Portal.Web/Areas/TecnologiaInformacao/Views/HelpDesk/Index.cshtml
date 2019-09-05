@@ -1,0 +1,78 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Web.Areas.TecnologiaInformacao.Models.HelpDeskConsultaViewModel
+
+@{ 
+    ViewBag.Title = "Chamados Ti";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Dashboard/Index">Dashboard<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/TecnologiaInformacao/HelpDesk/Index">Consulta de Chamados</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading row">
+                <div class="col-md-9 col-lg-9 col-xs-9 text-left">
+                    <h4 class="panel-title">Chamado Ti</h4>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xs-3 text-right">
+                    @Html.ButtonFiltro()
+                    <a href="~/TecnologiaInformacao/HelpDesk/Cadastro" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-plus-sign"></i> Novo Chamado</a>
+                </div>
+            </div>
+            <div class="panel-body minimizar">
+
+                @Html.Action("Filtro", "HelpDesk", new { filtro = Model.Filtro })
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#id</th>
+                            <th>Título</th>
+                            <th>Usuário</th>
+                            <th>Status</th>
+                            <th>Validar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var prop in Model.Lista)
+                        {
+                        <tr>
+                            <td>@prop.IdOsTi</td>
+                            <td>@prop.Titulo</td>
+                            <td>@prop.Usuario.Nome</td>
+                            <td>@prop.Status.Nome</td>
+                            <td>
+                                <a href="~/TecnologiaInformacao/HelpDesk/Validar?id=@prop.IdOsTi" class="btn btn-primary btn-xs">Validar</a>
+                            </td>
+
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+
+        <div class="text-center">
+            @Html.PageLinks(Model.Paginacao, "/TecnologiaInformacao/HelpDesk/Index", Model.Filtro)
+        </div>
+    </div>
+</div>
+
+
+

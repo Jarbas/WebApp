@@ -1,0 +1,12 @@
+C:\Portal\Rafitec.Cloud.Utils\bin\Release\Rafitec.Cloud.Utils.dll
+C:\Portal\Rafitec.Cloud.Utils\bin\Release\Rafitec.Cloud.Utils.pdb
+C:\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.csprojResolveAssemblyReference.cache
+C:\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.csproj.CoreCompileInputs.cache
+C:\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.dll
+C:\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.pdb
+D:\Rafitec\Portal\Rafitec.Cloud.Utils\bin\Release\Rafitec.Cloud.Utils.dll
+D:\Rafitec\Portal\Rafitec.Cloud.Utils\bin\Release\Rafitec.Cloud.Utils.pdb
+D:\Rafitec\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.csproj.CoreCompileInputs.cache
+D:\Rafitec\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.dll
+D:\Rafitec\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.pdb
+D:\Rafitec\Portal\Rafitec.Cloud.Utils\obj\Release\Rafitec.Cloud.Utils.csprojAssemblyReference.cache

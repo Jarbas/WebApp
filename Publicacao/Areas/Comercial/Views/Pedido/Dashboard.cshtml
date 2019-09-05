@@ -1,0 +1,163 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Dominio.Entidades.Pedido
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Areas/Comercial/Views/Shared/_ComercialCadastroLayout.cshtml";
+}
+
+<div class="row pedido">
+
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Comercial/Pedido/Index">Pedidos</a></li>
+            <li><a href="/Comercial/Pedido/Dashboard">Dashboard Pedido</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+               <h4>Pedido</h4>
+            </div>     
+            
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Informações Pedido</strong>
+                            </div>
+                            <div class="panel-body">
+                               <div class="row">
+                                   <div class="col-md-12">
+                                       <p><b>Cliente: </b>@Model.Cliente.RazaoSocial</p> 
+                                   </div>
+
+                                   @if (Model.idClienteContaOrdem != null)
+                                   {
+                                       <div class="col-md-12">
+                                           <p><b>Cliente Conta Ordem: </b>@Model.ClienteContaOrdem.RazaoSocial</p>
+                                       </div>
+                                   }
+
+
+                                   <div class="col-md-12">
+                                       <p><b>CNPJ: </b>@Model.Cliente.CnpjCpf</p>
+                                   </div>
+
+                                   <div class="col-md-12">
+                                       <p><b>Representante: </b>@Model.Representante.Nome @Model.Representante.Sobrenome</p>
+                                   </div>
+
+                                   <div class="col-md-12 nopadding">
+                                       <div class="col-md-3">
+                                           <p><b>Data Emissão: </b>@Model.DataEmissao.ToString("dd-MM-yyyy")</p>
+                                       </div>
+
+                                       <div class="col-md-3">
+                                           <p><b>Forma Pagamento: </b>@Model.FormaPagamento.ToString()</p>
+                                       </div>
+
+                                       <div class="col-md-3">
+                                           <p><b>Frete: </b>@Model.Frete.ToString()</p>
+                                       </div>
+                                   </div>
+
+                                   <div class="col-md-12 nopadding">
+
+                                       @if (Model.PrazoPagamento1 != null)
+                                       {
+                                            <div class="col-md-4">
+                                                <p><b>Prazo 1: </b>@Model.PrazoPagamento1</p>
+
+                                            </div>
+                                       }
+
+                                       @if (Model.PrazoPagamento2 != null)
+                                       {
+                                           <div class="col-md-4">
+                                               <p><b>Prazo 2: </b>@Model.PrazoPagamento2</p>
+
+                                           </div>
+                                       }
+
+                                       @if (Model.PrazoPagamento3 != null)
+                                       {
+                                           <div class="col-md-4">
+                                               <p><b>Prazo 3: </b>@Model.PrazoPagamento3</p>
+
+                                           </div>
+                                       }
+                                   </div>
+
+                                   <div class="col-md-12 nopadding">
+
+                                       @if (Model.PrazoPagamento4 != null)
+                                       {
+                                           <div class="col-md-4">
+                                               <p><b>Prazo 4: </b>@Model.PrazoPagamento4</p>
+
+                                           </div>
+                                       }
+
+                                       @if (Model.PrazoPagamento5 != null)
+                                       {
+                                           <div class="col-md-4">
+                                               <p><b>Prazo 5: </b>@Model.PrazoPagamento5</p>
+
+                                           </div>
+                                       }
+
+                                       @if (Model.PrazoPagamento6 != null)
+                                       {
+                                           <div class="col-md-4">
+                                               <p><b>Prazo 6: </b>@Model.PrazoPagamento6</p>
+
+                                           </div>
+                                       }
+                                   </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading row">
+                                <div class="col-md-9 col-lg-9 col-xs-9">
+                                    <strong>Pedidos Itens</strong>
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xs-3 text-right">
+                                    @Html.ButtonCadastro($"/Comercial/PedidoItem/Cadastro/{Model.idPedido}")
+
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                @if (Model.PedidoItem.Count() > 0)
+                                {
+                                    @Html.Action("Dashboard", "PedidoItem", new { itens = Model.PedidoItem })
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>Pedidos Itens Entrega</strong>
+                            </div>
+                            <div class="panel-body">
+                                @if (Model.PedidoItem.Count() > 0)
+                                {
+                                    @Html.Action("Dashboard", "PedidoItemEntrega", new { entregas = Model.PedidoItem.First().PedidoItemEntrega })
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

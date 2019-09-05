@@ -1,0 +1,116 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Dominio.Entidades.OsTi
+
+@{
+    ViewBag.Title = "Validar Chamado";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Dashboard/Index">Dashboard<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/TecnologiaInformacao/HelpDesk/Index">Consulta de Chamados</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Validar Chamado</h4>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <form action="~/TecnologiaInformacao/HelpDesk/Validar" method="post" class="formModalResponse">
+                    <div class="row">
+
+                        @Html.HiddenFor(model => Model.IdOsTi)
+
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group col-md-12">
+                            <label>Técnico</label>
+                            @Html.Raw(Html.EntidadeDropDownList<Rafitec.Cloud.Portal.Dominio.Entidades.Usuario>(Model.IdUsuario, "idUsuario", "Nome", "IdUsuarioTecnico", new { @class = "form-control", @disabled = "disabled" }))
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Data Inicio</label>
+                            @Html.TextBoxFor(model => model.DataInicio, new { @class = "form-control input-100", @disabled = "disabled" })
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Data Final</label>
+                            @Html.TextBoxFor(model => model.DataFim, new { @class = "form-control input-100", @disabled = "disabled" })
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Data Prevista</label>
+                            @Html.TextBoxFor(model => model.DataFim, new { @class = "form-control input-100", @disabled = "disabled" })
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label>Retorno Técnico</label>
+                            @Html.TextAreaFor(model => model.Retorno, 5, 100, new { @class = "form-control input-100", @disabled = "disabled" })
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label>Observação de finalização</label>
+                            @Html.TextAreaFor(model => model.Observacao, 5, 100, new { @class = "form-control input-100" })
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <div class="panel panel-default col-md-12 no-padding">
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <label>Validação</label>
+                                    </div>
+
+                                    <div class="col-md-12 no-padding">
+                                        <div class="col-md-4 no-padding">
+                                            @Html.RadioButtonFor(model => model.Avaliacao, "OTIMO")
+                                            <label>Ótimo</label>
+                                        </div>
+                                        <div class="col-md-4 no-padding">
+                                            @Html.RadioButtonFor(model => model.Avaliacao, "BOM")
+                                            <label>Bom</label>
+                                        </div>
+
+                                        <div class="col-md-4 no-padding">
+                                            @Html.RadioButtonFor(model => model.Avaliacao, "REGULAR")
+                                            <label>Regular</label>
+                                        </div>
+                                        <div class="col-md-4 no-padding">
+                                            @Html.RadioButtonFor(model => model.Avaliacao, "RUIM")
+                                            <label>Ruim</label>
+                                        </div>
+                                        <div class="col-md-4 no-padding">
+                                            @Html.RadioButtonFor(model => model.Avaliacao, "REVISAR")
+                                            <label>Revisar</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            @Html.ButtonSalvar()
+                            @Html.ButtonCancelar(Url.Action("Index", "HelpDesk", new { pagina = 1 }))
+                        </div>
+
+                    </div>
+
+      
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

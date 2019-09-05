@@ -1,0 +1,62 @@
+﻿@using Rafitec.Cloud.Portal.Dominio.Entidades
+@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Dominio.Entidades.Produto
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Dashboard/Index">Dashboard <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/Cadastro/Produto/Index">Consulta de Produto <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/Cadastro/Produto/Cadastro">Cadastro de Produto</a></li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5><b>Cadastro de Produto</b></h5>
+            </div>
+            <div class="panel-body">
+                <form action="~/Cadastro/Produto/Cadastro" method="post" class="formModalResponse">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        <label>Descrição<span class="obrigatorio"> *</span></label>
+                        @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control input-50" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Unidade Negocio<span class="obrigatorio"> *</span></label>
+                        @Html.Raw(Html.EntidadeDropDownList<UnidadeNegocio>("idUnidadeNegocio", "Descricao", "idUnidadeNegocio", new { @class = "form-control input-50", id = "inputUnNegocio" }))
+                     
+                    </div>
+
+                    <div class="form-group">
+                        <label>Unidade Venda<span class="obrigatorio"> *</span></label>
+                        <select id="inputUnVenda" name="idUnidadeVenda" class="form-control input-50">
+                            <option></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo Produto<span class="obrigatorio"> *</span></label>
+                        @Html.Raw(Html.EntidadeDropDownList<ProdutoTipo>("idTipoProduto", "Descricao", "idTipoProduto", new { @class = "form-control input-50"}))
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"> Salvar</i></button>
+                        <a class="btn btn-danger" href="~/Admin/Usuario/Index"><i class="glyphicon glyphicon-remove"> Cancelar</i></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

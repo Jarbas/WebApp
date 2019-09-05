@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Rafitec.Cloud.Portal.Dominio.Entidades.PedidoItemEntrega>
+
+
+<table class="table" id="pedido-item-entrega">
+    <thead>
+        <tr>
+            <th>
+                #Seq
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Data Entrega
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var prop in Model)
+            {
+                <tr>
+                    <td>@prop.Sequencia</td>
+                    <td>@prop.Quantidade</td>
+                    <td>@prop.DataEnterga.ToString("dd-MM-yyyy")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

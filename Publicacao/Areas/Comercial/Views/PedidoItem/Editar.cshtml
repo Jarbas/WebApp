@@ -1,0 +1,103 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@using Rafitec.Cloud.Portal.Dominio.Entidades
+@model Rafitec.Cloud.Portal.Dominio.Entidades.PedidoItem
+
+@{
+    ViewBag.Title = "Pedido Itens";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Comercial/Pedido/Index">Consulta de Pedidos</a></li>
+            <li><a href="/Comercial/Pedido/Dashboard/@Model.idPedido">Dashboard Pedido</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>
+                    Pedido Itens
+                </h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Protudo
+                            </div>
+                            <div class="panel-body">
+                                <form action="/Comercial/PedidoItem/Editar" method="post" class="formResponse">
+
+                                    <div class="row">
+                                        <div class="col-md-12 hidden">
+                                            @Html.AntiForgeryToken()
+                                            @Html.HiddenFor(model => model.idPedido)
+                                            @Html.HiddenFor(model => model.idEmpresa)
+                                            @Html.HiddenFor(model => model.idPedidoItem)
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label>Produto<span class="obrigatorio"> *</span></label>
+                                            @Html.Raw(Html.EntidadeDropDownList<Produto>("idProduto", "Descricao", "idProduto", new { @class = "form-control input-100" }))
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label>Quantidade<span class="obrigatorio"> *</span></label>
+                                            @Html.TextBoxFor(model => model.Quantidade, new { @class = "form-control input-100" })
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label>Valor Unitario<span class="obrigatorio"> *</span></label>
+                                            @Html.TextBoxFor(model => model.ValorUnitario, new { @class = "form-control input-100" })
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label>Total<span class="obrigatorio"> *</span></label>
+                                            @Html.TextBoxFor(model => model.Total, new { @class = "form-control input-100" })
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label>IPI<span class="obrigatorio"> *</span></label>
+                                            @Html.TextBoxFor(model => model.Ipi, new { @class = "form-control input-100" })
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label>% Comissão<span class="obrigatorio"> *</span></label>
+                                            @Html.TextBoxFor(model => model.PercentualComissao, new { @class = "form-control input-100" })
+                                        </div>
+
+                                        <div class="form-group col-md-9">
+                                            <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok"></i> Salvar</button>                                            
+                                            <a href="/Comercial/Pedido/Dashboard/@Model.idPedido" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Entergas
+                            </div>
+                            <div class="panel-body">
+                                @Html.Action("Index", "PedidoItemEntrega", new { id = Model.idPedidoItem})
+                                <a class="getModal btn btn-primary" href="/Comercial/PedidoItemEntrega/Cadastro/@Model.idPedidoItem"><i class="glyphicon glyphicon-plus-sign"></i> Nova Entrega</a>
+                              <!--  <button class="btn btn-primary" type="button"><i class="glyphicon glyphicon-plus-sign"></i> Nova Entrega</button> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@using Rafitec.Cloud.Portal.Dominio.Entidades
+@model Rafitec.Cloud.Portal.Web.Areas.TecnologiaInformacao.Models.Filtro.HelpDeskFiltro
+
+
+<form id="form-filtro" action="~/TecnologiaInformacao/HelpDesk/Index" method="get">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label>Id#</label>
+            @Html.TextBoxFor(model => Model.Codigo, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-8">
+            <label>Título</label>
+            @Html.TextBoxFor(model => Model.Descricao, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Solicitante</label>
+            @Html.Raw(Html.EntidadeDropDownList<Rafitec.Cloud.Portal.Dominio.Entidades.Usuario>(Model.IdUsuario, "idUsuario", "Nome", "IdUsuario", new { @class = "form-control" }))
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Status</label>
+            @Html.Raw(Html.EntidadeDropDownList<Rafitec.Cloud.Portal.Dominio.Entidades.OsStatus>(Model.IdStatus, "IdStatus", "Nome", "IdStatus", new { @class = "form-control" }))
+        </div>
+
+
+        <div class="form-group col-md-6">
+            <label>Setor</label>
+            @Html.Raw(Html.EntidadeDropDownList<Rafitec.Cloud.Portal.Dominio.Entidades.Setor>(Model.IdSetor, "IdSetor", "Nome", "IdSetor", new { @class = "form-control" }))
+        </div>
+
+        <div class="form-group col-md-12">
+            @Html.ButtonSearch("Buscar")
+            @Html.ButtonCancelar("/TecnologiaInformacao/HelpDesk/Index")
+        </div>
+    </div>
+</form>

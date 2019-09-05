@@ -1,0 +1,83 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Web.Areas.Comercial.Models.PedidoViewModel
+@{
+    ViewBag.Title = "Pedidos Portal";
+    Layout = "~/Areas/Comercial/Views/Shared/_ComercialCadastroLayout.cshtml";
+}
+
+<div class="row" id="pedido">
+
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Comercial/Pedido/Index">Consulta de Pedidos</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12 col-lg-12 col-xs-12">
+        <div class="panel panel-primary">
+            <div class=" panel-heading row">
+                <div class="col-md-9">
+                    <h4>Pedidos</h4>
+                </div>
+
+                <div class="col-md-3 text-right">
+                    @Html.ButtonFiltro()
+                    @Html.ButtonCadastro("/Comercial/Pedido/Cadastro")
+                </div>
+                
+            </div>
+            <div class="panel panel-body minimizar">
+
+
+                @Html.Partial("_Filtro", Model.Filtro)
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+     
+            <div class="panel panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#id</th>
+                            <th>Cliente</th>
+                            <th>Pedido Representante</th>
+                            <th>Pedido Cliente</th>
+                            <th>Pedido Emrpesa Producao</th>
+                            <th class="text-center">-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var prop in Model.Pedidos)
+                        {
+                            <tr>
+                                <td>@prop.idPedido</td>
+                                <td>@prop.Cliente.RazaoSocial</td>
+                                <td>@prop.CodPedidoRepresentante</td>
+                                <td>@prop.CodPedidoCliente</td>
+                                <td>@prop.CodPedidoEmpresaProducao</td>
+                                <td class="text-center">
+                                    @Html.ButtonVisualizacao($"/Comercial/Pedido/Dashboard/{prop.idPedido}")                           
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 text-center">
+        @Html.PageLinks(Model.Paginacao, "/Comercial/Pedido/Index", Model.Filtro)
+    </div>
+
+
+</div>
+

@@ -1,0 +1,49 @@
+﻿@model Rafitec.Cloud.Portal.Web.Areas.Admin.Models.AlteracaoSenhaViewModel
+
+
+<form action="/Admin/Usuario/AlterarSenha" method="post" class="formModalResponse">
+    <div class="form-group ">
+        <div class="input-group">
+            <span class="input-group-addon glyphicon glyphicon-lock"></span>
+            <input class="form-control" type="password" name="SenhaAtual" placeholder="Senha Atual" />
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon glyphicon glyphicon-lock"></span>
+            <input class="form-control" type="password" name="NovaSenha" placeholder="Nova Senha" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon glyphicon glyphicon-lock"></span>
+            <input class="form-control" type="password" name="RepeticaoNovaSenha" placeholder="Nova Senha" />
+        </div>
+    </div>
+    @if (ViewBag.MensagemAlteracaoSenha != null)
+    {
+        if (ViewBag.MensagemAlteracaoSenha.ToString() == "True")
+        {
+            <div class="form-group">
+                <p style="color:green">Senha Alterada Com Sucesso.</p>
+            </div>
+        }
+        else
+        {
+            <div class="form-group">
+                <p style="color:red">@ViewBag.MensagemAlteracaoSenha.ToString()</p>
+            </div>
+        }
+
+    }
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-floppy-saved"> </i>Confirmar</button>
+        <button type="reset" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-floppy-remove"> </i>Cancelar</button>
+    </div>
+</form>
+
+
+
+

@@ -1,0 +1,80 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@using Rafitec.Cloud.Portal.Dominio.Entidades
+@model Rafitec.Cloud.Portal.Web.Areas.Comercial.Models.RepresentanteViewModel<Entidade>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Comercial/Views/Shared/_ComercialCadastroLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading row">
+                <div class="col-xs-9">
+                    <h4>Representantes</h4>
+                </div>
+                <div class="col-xs-3 text-right">
+                    @Html.ButtonFiltro()
+                    @Html.ButtonCadastro("/Comercial/Representante/Cadastro")
+                  <!--  <button class="btn-minimizar btn btn-primary"><i class="glyphicon glyphicon-filter"></i> Filtrar</button>
+                    <a href="~/Comercial/Representante/Cadastro" class="btn btn-default pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Cadastrar</a>--> 
+                </div>
+            </div>
+            <div class="panel-body minimizar">
+                <form action="~/Comercial/Representante/Index" method="get">
+
+                    <div class="form-group">
+                        <label>ID</label>
+                        @Html.TextBoxFor(model => Model.Filtro.Codigo, new { @class = "form-control input-20" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Razão Social</label>
+                        @Html.TextBoxFor(model => Model.Filtro.Descricao, new { @class = "form-control input-100" })
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+                        <a href="/Comercial/Representante/Index" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Limpar</a>
+                    
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#Id</th>
+                            <th>Razão Social</th>
+                            <th>Cnpf/Cpf</th>
+                            <th class="text-center">-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var r in Model.Lista)
+                        {
+                            <tr>
+                                <td>@r.idEntidade</td>
+                                <td>@r.RazaoSocial</td>
+                                <td>@r.CnpjCpf</td>
+                                <td class="text-center">@Html.ButtonEditar($"/Comercial/Representante/Editar/{r.idEntidade}") </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 text-center">
+        @Html.PageLinks(Model.Paginacao, "/Comercial/Representante/Index", Model.Filtro)
+    </div>
+
+
+</div>

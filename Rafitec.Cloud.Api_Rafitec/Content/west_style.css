@@ -1,0 +1,335 @@
+/* ID = # (cerquilha/sustenido/jogo da velha) 
+ Class = . (ponto final)
+ sequencia  margin-top  margin-right margin-bottom margin-left
+
+Sobre rem   
+* EM valor padrão de 16px. Logo 20px ÷ 16 = 1.25. REM - root  ou seja o body
+
+Sobre browser
+    -moz-transform: rotate(5deg); * Mozila
+    -ms-transform: rotate(5deg); * IE 9 
+    -webkit-transform: rotate(5deg); * Chrome, Safari, Opera */
+
+/**** CSS HEAD ****/
+
+.ugNine {
+    height: 250px;
+    width: 350px;
+    border: solid 1px #c6c6c6;
+    margin: 2px 2px 2px 1px;
+}
+
+#textoNine {
+    position: absolute;
+    margin-top: -240px;
+    margin-left:10px;
+}
+
+img.img_nine {
+    opacity: 0.15;
+    -moz-opacity: 0.65;
+    filter: alpha(opacity=25);
+    height: 250px;
+    width: 350px;
+}
+
+.panel-heading {
+    padding: 5px 10px;
+}
+
+.list-inline {
+    margin: 1px 5px 5px 5px
+
+}
+/**** CSS BODY ****/ 
+
+#mensagem{ 
+margin-top: 30px;
+}
+
+#profile-login {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+#imgcentro {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+}
+
+.borderGrafico {
+    width:100%;
+    border: 1px solid silver ;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.labelRadio {
+    text-align: left ;
+    width: 50px ;
+}
+
+/*tamando doc campos cadastros*/
+input,
+select,
+textarea {
+    max-width: 350px;
+}
+
+#AreaAvaliacao {
+    max-width: 640px;
+}
+
+.Analise360 {
+ padding-top:30px;
+}
+
+body {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 5px;
+    padding-right: 15px;
+}
+/*Principal*/
+
+.west-box {
+    margin-top: 30px;
+    border-radius: 3px;
+    border: groove lightgray 1px;
+    box-shadow: 1px 1px 10px #888888;
+    padding: 5px;
+}
+
+  /*DASHBOARD*/
+
+ #dashboard {
+     margin:30px 5px 10px 5px;
+     width: 100%;
+     height: 100%;
+ }
+
+ .dashboard-box {      
+     float: left;
+     margin: 5px;
+     width: 40.0%;
+     box-shadow: 1px 1px 5px #888888;
+ }
+ 
+ /********LOGIN********/
+  .user-body {
+        padding: 5px;
+        position:absolute;
+        background: white;
+        top: 1px;
+        float: right;
+        right: 1px;
+        border-radius: 3px;
+        border: groove lightgray 1px;
+        box-shadow: 1px 1px 10px #888888;
+        width: 335px;
+        height: 300px;
+    }
+      
+#user-menu{
+        background: red;/* transparent;*/
+        border: transparent;
+        width: 100%;
+        height: 100%;
+
+}
+
+.crud-west {
+     border-radius: 3px;
+     border: groove lightgray 1px;
+    /* box-shadow: 0px 0px 10px #888888;*/
+     padding: 5px;
+     margin: 1px
+     
+}
+
+.form-west {
+    display: none;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    top:50%;
+    position: absolute;
+    margin-left: -25%;
+    margin-top: -25%;
+}
+
+.noborder {
+     border: none;
+}
+
+.inputimage {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background-color: transparent;
+    color: transparent;
+}
+
+.input-file {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background-color: transparent;
+    color: transparent;
+}
+/**** CSS FOOTER ****/
+.panel-footer {
+    padding: 1px 15px;
+    color: #A0A0A0;
+}
+
+.minimizar {
+    display: none;
+}
+
+.panel-heading.row {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.row-detail {
+    margin-top: 0px;
+    padding:0;
+}
+
+
+.has-error {
+    color: #a94442;
+}
+
+.has-success {
+    color: #5cb85c;
+}
+
+.input-10 {
+    max-width: 10%;
+}
+
+.input-20 {
+    max-width: 20%;
+}
+
+.input-30 {
+    max-width: 30%;
+}
+
+.input-40 {
+    max-width: 40%;
+}
+
+.input-50 {
+    max-width: 50%;
+}
+
+.input-60 {
+    max-width: 60%;
+}
+
+
+.input-70 {
+    max-width: 70%;
+}
+
+.input-80 {
+    max-width: 80%;
+}
+
+.input-85 {
+    max-width: 80%;
+}
+
+.input-90 {
+    max-width: 90%;
+}
+
+.input-100 {
+    max-width: 100%;
+}
+
+/*MODAL CRUD*/
+.img-modal-tittle {
+    width: 20%;
+}
+
+.img-modal-body {
+    width: 10%;
+}
+
+.img-modal-alert {
+    width: 25%;
+}
+
+.message-error {
+    color: red;
+}
+
+.message-success {
+    color: green;
+}
+
+
+/*-------Input with glyphicon*/
+.inner-addon {
+    position: relative;
+}
+
+.inner-addon .glyphicon {
+        position: absolute;
+        padding: 10px;
+        pointer-events: none;
+}
+/* align icon */
+.left-addon .glyphicon {
+    left: 0px;
+}
+
+.right-addon .glyphicon {
+    right: 0px;
+}
+
+/* add padding  */
+.left-addon input {
+    padding-left: 30px;
+}
+
+.right-addon input {
+    padding-right: 30px;
+}
+
+.detail-relatorio {
+    margin: 2px;
+    padding: 2px;
+}
+/*
+.col-detail {
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}*/

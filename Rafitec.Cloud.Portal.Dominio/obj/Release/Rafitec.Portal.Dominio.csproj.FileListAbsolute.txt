@@ -1,0 +1,12 @@
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\Rafitec.Portal.Dominio.dll.config
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\Rafitec.Portal.Dominio.dll
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\Rafitec.Portal.Dominio.pdb
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\EntityFramework.dll
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\EntityFramework.SqlServer.dll
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\EntityFramework.xml
+C:\Portal\Cloud\Rafitec.Portal.Dominio\bin\Release\EntityFramework.SqlServer.xml
+C:\Portal\Cloud\Rafitec.Portal.Dominio\obj\Release\Rafitec.Portal.Dominio.csprojResolveAssemblyReference.cache
+C:\Portal\Cloud\Rafitec.Portal.Dominio\obj\Release\Rafitec.Portal.Dominio.dll
+C:\Portal\Cloud\Rafitec.Portal.Dominio\obj\Release\Rafitec.Portal.Dominio.pdb

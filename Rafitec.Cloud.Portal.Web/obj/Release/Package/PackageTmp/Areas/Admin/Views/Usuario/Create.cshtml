@@ -1,0 +1,90 @@
+﻿@using Rafitec.Cloud.Utils.Enums;
+@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@using Rafitec.Cloud.Portal.Dominio.Entidades
+@model Rafitec.Cloud.Portal.Dominio.Entidades.Usuario
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Dashboard/Index">Dashboard <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/Admin/Usuario/Index">Consulta de Usuários <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/Admin/Usuario/Cadastro">Cadastro de Usuários</a></li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5><b>Cadastro de Usuário</b></h5>
+            </div>
+            <div class="panel-body">
+                <form action="~/Admin/Usuario/Cadastro" method="post" class="formModalResponse">
+                    @Html.AntiForgeryToken()
+                    
+                    <div class="form-group">
+                        <label>Nome<span class="obrigatorio"> *</span></label>
+                        @Html.TextBoxFor(model => Model.Nome, new {@class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sobrenome<span class="obrigatorio"> *</span></label>
+                        @Html.TextBoxFor(model => Model.Sobrenome, new { @class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group group-glyphicon">
+                        <label>Email<span class="obrigatorio"> *</span></label>
+                        <p class="message-error minimizar">Email já está sendo usado por outro Usuário.</p>  
+                        <div class="inner-addon left-addon">
+                            @Html.TextBoxFor(model => Model.Email, new { @class = "form-control input-50", id="inputEmail" })
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group group-glyphicon" id="groupLogin">
+                        <label>Login<span class="obrigatorio"> *</span></label>
+                        <p class="message-error minimizar">Login já está sendo usado por outro Usuário.</p>                        
+                        <div class="inner-addon left-addon">
+                            @Html.TextBoxFor(model => Model.Login, new { @class = "form-control input-30", id="inputLogin" })
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label>Senha<span class="obrigatorio"> *</span></label>
+                        @Html.PasswordFor(model => Model.Senha, new { @class = "form-control input-30" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Status</label>
+                        <br />
+                        @Html.RadioButtonFor(model => Model.Status, Status.Ativo)
+                        @Html.Label("Ativo", new { @class = "labelRadio" })
+                        @Html.RadioButtonFor(model => Model.Status, Status.Inativo)
+                        @Html.Label("Inativo", new { @class = "labelRadio" })
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label>Empresa Representante</label>
+                        @{
+                            var x = Html.EntidadeDropDownList<Entidade>("idEntidade", "RazaoSocial", "idRepresentante", e => (e.TipoEntidadeDb == "Representante"), new { @class = "form-control input-50" });
+                            @Html.Raw(x);
+                        }
+
+                    </div>
+
+                        
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-ok"> Salvar</i></button>
+                        <a class="btn btn-danger" href="~/Admin/Usuario/Index"><i class="glyphicon glyphicon-remove"> Cancelar</i></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

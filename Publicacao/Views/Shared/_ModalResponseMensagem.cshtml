@@ -1,0 +1,72 @@
+﻿@using Rafitec.Cloud.Utils.Enums
+@model Rafitec.Cloud.Portal.Web.Models.ResponseModelView
+
+<div class="modal fade" id="modal-crud-mensagem" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">                
+                <center>
+                    <img src="~/img/tittleTransp.png" class="img-modal-tittle" />
+                </center>                
+            </div>
+
+            <div class="modal-body">
+               <div class="row">
+                   <div class="col-md-4">
+                       <center>
+                           @if (Model.Status == StatusResponse.Success)
+                           {
+                               <img src="~/img/Ok.png">
+                           }
+                           else if (Model.Status == StatusResponse.Error)
+                           {
+                              <img src="~/img/Error.png">
+                           }
+                           else if (Model.Status == StatusResponse.Warning)
+                           {
+                               <img src="~/img/Waring.png">
+                           }
+                       </center>
+
+                   </div>
+                   <div class="col-md-8">
+                       @if (Model.Status == StatusResponse.Success)
+                       {
+                           foreach (var sm in Model.SuccessMessage)
+                           {
+                                 <p class="message-success"><b>@sm</b></p>
+                           }
+
+                       }
+                       else
+                       {
+                           foreach (var em in Model.ErrorMessage)
+                           {
+                                <p class="message-error"><b>@em</b></p>
+                           }
+                       }
+
+                   </div>
+               </div>
+                
+            </div>
+
+            <div class="modal-footer">
+                @if (Model.Status == StatusResponse.Success)
+                {
+                    if (Model.NovoCadastro)
+                    {
+                        <a href="@Model.RotaNovoCadastro" class="btn btn-primary"><i class="glyphicon glyphicon-plus-sign"> </i>Novo Cadastro</a>
+                    }
+                    <a href="@Model.RotaSuccess" class="btn btn-default"><i class="glyphicon glyphicon-ok"> </i>Ok</a>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"> </i>Ok</button>
+                }
+            </div>
+            
+        </div>        
+    </div>    
+</div>

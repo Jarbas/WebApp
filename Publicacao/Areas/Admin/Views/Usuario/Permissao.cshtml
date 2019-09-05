@@ -1,0 +1,54 @@
+﻿@model Rafitec.Cloud.Portal.Dominio.Entidades.Usuario
+
+@{
+    ViewBag.Title = "Permissao";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Permissionamento Usuário - @Model.Nome @Model.Sobrenome</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Controlador</th>
+                            <th>Permissções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var controllerAtual = string.Empty;
+                            foreach (var prop in Model.Permissao)
+                            {
+                                <tr>
+                                    <td>@prop.ControllerName</td>
+                                    <td></td>
+                                </tr>
+
+                                if (!prop.ControllerName.Equals(controllerAtual))
+                                {
+                                    controllerAtual = prop.ControllerName;
+                                }
+                            }
+                        }
+                        
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,56 @@
+﻿@using Rafitec.Cloud.Utils.Enums
+@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@{
+    ViewBag.Title = ViewBag.TituloRelatorio;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="portal-box">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading row">
+                <div class="col-xs-9">
+                    <h1 class="panel-title"><b>Relatório - @ViewBag.TituloRelatorio</b> </h1>
+                </div>
+
+                <div class="col-xs-3 text-right">
+                    @Html.ButtonFiltro("Filtrar")
+                </div>
+            </div>
+
+            <div class="panel-body">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <center>
+                                @if (ViewBag.StatusFiltro != null)
+                                {
+                                    if (ViewBag.StatusFiltro == StatusFiltro.NaoPermitirFiltrar)
+                                    {
+                                        <h4 class="message-error">Não é possivel gerar o relatório sem preencher os filtros.</h4>
+                                    }
+                                }
+                                <h4> Preecha o filtro para gerar o relatório </h4>
+                            </center>
+                        </div>
+                        <div class="col-md-8 img_prod text-center">
+                            <img src="/img/BarGraph.png" class="img-responsive">
+                        </div>
+                    </div>
+            </div>
+        </div>
+   
+    </div>
+
+
+
+     
+</div>
+

@@ -1,0 +1,17 @@
+﻿@model Rafitec.Cloud.Portal.Dominio.Entidades.Usuario
+
+<div class="row">
+    <div class="col-md-2">
+        <img class="img-thumbnail" width="120" height="120" src="@Url.Action("ObterImagem", "Usuario", new { Model.idUsuario })" />
+    </div>
+
+    <div class="col-md-10">   
+        <h5> <b>Nome:</b> @Model.Nome </h5>
+       <!-- <h5> Setor: TI</h5>
+        <h5> Cargo: Desenvolvedor </h5>-->
+        <a class="btn  btn-default btn-xs " href="/Admin/Usuario/Perfil">
+            <i class="glyphicon  glyphicon-camera"> </i>
+            Alterar Perfil
+        </a>
+    </div>
+</div>

@@ -1,0 +1,154 @@
+﻿a, h1, h2, h3, h4, h5, h6, label, i {
+    font-style: initial;
+}
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default 
+input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+
+#nav-principal {
+    background: #003752;
+}
+
+#nav-principal ul li a {
+    font-size: 15px;
+}
+
+#nav-principal ul li a:hover,
+#nav-principal ul li a:focus {
+    background: #4FC512;
+    border-radius: 2%;
+    border: none;
+}
+
+#nav-principal button span:hover,
+#nav-principal button span:focus {
+    color: #4FC512;
+}
+
+
+#nav-principal ul li ul {
+    background: #003752;
+}
+
+
+
+#nav-principal ul li a {
+    color: white;
+}
+
+#form-login span {
+    height: 100%;
+    border-radius: 0px;
+    color: white;
+    background: #003752;
+}
+
+#form-login .form-control {
+    border-radius: 0px;
+    border: 1px solid #003752;
+    box-shadow: none;
+    background: transparent none repeat scroll 0% 0%;
+    padding: 0px 4rem;
+}
+
+#form-login center {
+    padding-bottom: 10px;
+}
+
+#profile-login {
+    border-radius: 50%;
+}
+/*
+.form-control {
+    border-radius: 0px !important;
+    border: 1px solid #003752 !important;
+    box-shadow: none !important;
+    background: transparent none repeat scroll 0% 0% !important;
+    padding: 0px 4rem !important;
+}
+*/
+
+
+
+/*
+ul {
+    width: 500px; /* Tamanho da lista principal 
+    margin: 0 auto; /* Para centralizar na página 
+    list-style: none;
+}
+
+    ul li {
+       // float: left;
+      //  background-color: #FFFFFF;
+        position: relative; /* Necessário para o item filho se posicionar a LI que é o pai 
+    }
+
+        ul li a {
+            display: block;
+            padding: 10px;
+         //   border: 1px #000000 solid;
+            text-decoration: none;
+            color: #000000;
+        }
+
+        ul li:hover > a { /* Quando passarmos o mouse sobre a LI colocamos estilo no A 
+            background-color: #0099FF;
+            color: #FFFFFF;
+        }
+
+        ul li ul {
+            display: none;
+            position: absolute;
+        }
+
+        ul li:hover ul { /* Quando passar o mouse sobre a LI aparecerá o menu filho 
+            width: 110px; /* Tamanho do menu filho 
+            display: block;
+        }
+
+        ul li ul li {
+            width: 110px;
+            cursor: pointer;
+        }
+
+            ul li ul li:hover > a {
+                background-color: #0099FF;
+                color: #FFFFFF;
+            }
+
+            ul li ul li ul li {
+                display: none;
+            }
+
+            ul li ul li ul {
+                top: 0; /* Para deixar o sub-menu na mesma linha do menu pai 
+            }
+
+            ul li ul li:hover ul li {
+                display: block;
+                width: 130px;
+                left: 100%; /* Para deixar o sub-menu ao lado do menu pai 
+            }
+    */    

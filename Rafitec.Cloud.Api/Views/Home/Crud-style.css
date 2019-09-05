@@ -1,0 +1,49 @@
+﻿.nav-crud ul li a{
+    display: inline;
+    background-color: green; 
+    padding:1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    cursor: pointer;
+    color: yellow;   
+    
+}
+
+.nav-crud{
+    text-align:left;
+    position: relative;
+    padding: 0.8%;
+    background-color: #CCFFCC;
+    margin-bottom: 0%;
+    top: 0px;
+    width: 100%;
+    height: 100%;    
+}
+
+.nav-crud ul {
+    position: relative;
+    top: auto;
+    margin-bottom: 0%;
+    width: 100%;
+    height: 100%;  
+}
+
+.nav-crud ul li {
+  display: inline;   
+  margin: 0%;
+/*  padding: 0.1px;*/
+  text-align: center;
+}
+
+.nav-crud ul li a:hover {
+   display: inline;
+   background: red;
+   border-radius: 5px;
+}
+
+.crud-boby {
+    margin: 0.5%;
+    padding: 0.5%;
+}
+
+

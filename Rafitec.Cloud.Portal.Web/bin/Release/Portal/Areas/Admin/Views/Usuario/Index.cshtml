@@ -1,0 +1,61 @@
+﻿@model Rafitec.Cloud.Portal.Web.Areas.Cadastros.Models.UsuarioModelView
+
+@{ 
+    ViewBag.Title = "Cadastro de Usuário";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="portal-index row">
+    
+    <h1><i class="glyphicon glyphicon-user"></i><strong> Usuários </strong></h1>
+    <a href="#" class="btn btn-portal"><i class="glyphicon glyphicon-plus"></i><strong> Novo</strong></a>
+    
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#id</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var prop in Model.Usuarios)
+                {
+                    <tr>
+                        <td>@prop.idUsuario</td>
+                        <td>@prop.Nome @prop.Sobrenome</td>
+                        <td>@prop.Email</td>
+                        <td>
+                            <button onclick="detalhesUsuario(@prop.idUsuario)" class="btn btn-portal btn-xs"><i class="glyphicon glyphicon glyphicon-list-alt"></i><strong> Detalhe</strong></button>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        function detalhesUsuario(iduser) {
+            alert('aqui' + iduser);
+            $.ajax({
+                url: '/Cadastros/Usuario/Detalhes',
+                method: 'get',
+                data: {id: iduser},
+                success: function(retorno){
+                    console.log(retorno);
+                }
+            });
+        }
+    </script>
+
+
+</div>
+
+
+

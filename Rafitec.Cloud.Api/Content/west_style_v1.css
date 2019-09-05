@@ -1,0 +1,324 @@
+
+/*  ############### CSS VIDEO INDEX ###############
+ 
+ ID = # (cerquilha/sustenido/jogo da velha) 
+ Class = . (ponto final)
+ sequencia  margin-top  margin-right margin-bottom margin-left
+
+Sobre rem   
+* EM valor padrão de 16px. Logo 20px ÷ 16 = 1.25. REM - root  ou seja o body
+
+Sobre browser
+    -moz-transform: rotate(5deg); * Mozila
+    -ms-transform: rotate(5deg); * IE 9 
+    -webkit-transform: rotate(5deg); * Chrome, Safari, Opera 
+
+*/
+
+html {
+    font-family: "Open Sans", sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+noscript .alert {
+    position: absolute;
+    text-align: center;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0
+}
+
+/* indvid - Video Index */
+#indvid {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+    #indvid::before {
+        z-index: 0;
+        content: '';
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /*background: url(../img/back.png) top left repeat;*/
+        /* filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=90);*/
+        opacity: 0.9
+    }
+
+    #indvid::after {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #003752;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -100;
+        /* filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);*/
+        opacity: 0;
+        -moz-transition: opacity .25s ease-out;
+        -o-transition: opacity .25s ease-out;
+        -webkit-transition: opacity .25s ease-out;
+        transition: opacity .25s ease-out
+    }
+
+    #indvid.menu_shown::after {
+        z-index: 9998;
+        /* filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=90);*/
+        opacity: .9
+    }
+
+#indvid .banner {
+    font-size: 1vw;
+    position: absolute;
+    top: 50%;
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%)
+}
+
+#indvid .banner h1 {
+    color: dimgrey;
+    font-family:"Open Sans", sans-serif;
+    font-size: 19.6vw;
+    line-height: 0.52em;
+    margin: 9.5rem 0 0
+}
+
+#indvid .banner h1 span {
+    font-size: 0.612em
+}
+
+#indvid .banner h1 strong {
+    color: #00ACEE;
+    font-family: "Open Sans", sans-serif;
+    line-height: 0.5em
+}
+
+@media (min-width: 768px) {
+    #indvid .banner h1 {
+        font-size: 15.6rem;
+        margin: 6rem 0 0
+    }
+}
+
+#indvid .banner h2 {
+    color: dimgrey;
+    font-family: "Open Sans 200", sans-serif;
+    font-size: 4.533vw;
+    line-height: 0.794em;
+    margin: 1.85em 0 0
+}
+
+@media (min-width: 768px) {
+    #indvid .banner h2 {
+        font-size: 3rem;
+        margin-top: 2.25em
+    }
+}
+
+#indvid>video {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -100;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-size: cover
+}
+
+.no-videoautoplay #indvid,
+.no-cssvhunit #indvid {
+    background: url(../img/ind_raf.jpg) center center no-repeat;
+    background-size: cover
+}
+
+.no-videoautoplay #indvid::before,
+.no-cssvhunit #indvid::before {
+    display: none
+}
+
+.no-videoautoplay #indvid>video,
+.no-cssvhunit #indvid>video {
+    display: none
+}
+
+.no-objectfit.cssvhunit #indvid {
+    height: 0;
+    padding-bottom: 56.25%
+}
+
+.conheca_mais {
+    position: absolute;
+    z-index: 9998;
+    bottom: 5vw;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300
+}
+
+@media (min-width: 768px) { /* alteracao q for 768 pixelS */
+    .conheca_mais {
+        text-align: left;
+        bottom: 3.125vw
+    }
+}
+
+.conheca_mais a {
+    display: inline-block;
+    border: 2px solid #00ACEE;
+    font-size: 4.5vw;
+    color: dimgrey;
+    padding: 2vw 8vw;
+    -moz-border-radius: 7rem;
+    -webkit-border-radius: 7rem;
+    border-radius: 7rem;
+    -moz-transition: background .50s ease-out;
+    -o-transition: background .50s ease-out;
+    -webkit-transition: background .50s ease-out;
+    transition: background .50s ease-out
+}
+
+.conheca_mais a:hover,
+.conheca_mais a:focus,
+.conheca_mais a:active {
+    text-decoration: none;
+    -moz-transition: background .50s ease-out;
+    -o-transition: background .50s ease-out;
+    -webkit-transition: background .50s ease-out;
+    background: #00ACEE
+}
+
+@media (min-width: 768px) {
+    .conheca_mais a {
+        font-size: 2.4rem;
+        border-width: 1px;
+        line-height: 1em;
+        padding: 1.4rem 4rem;
+        -moz-border-radius: 3.2rem;
+        -webkit-border-radius: 3.2rem;
+        border-radius: 3.2rem
+    }
+}
+
+.body_index {
+    background: #FFFFFF;
+    margin-top: 100vh
+}
+
+.img_prod:hover img,
+.img_prod:focus img,
+.img_prod:active img{
+    padding:5px;
+     text-decoration: none;
+     -moz-transition: background .80s ease-out;
+    -o-transition: background .80s ease-out;
+    -webkit-transition: background .80s ease-out;
+    background: #8CD1EA;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+
+.img_prod:hover  h2,
+.img_prod:focus  h2 ,
+.img_prod:active h2 {
+    background: #FEFEFE
+}
+
+.img_prod  img {
+  
+  left: 0px;
+  right: 0px;
+  top: 5px;
+  bottom: 0px;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100px;
+
+    
+}
+
+.lead {
+margin: 15px;
+font-size:7px;  
+text-align: center;    
+    
+}
+
+#sombra{
+ width: 200px;
+ padding: 1px;
+ background-color: #363636;
+ box-shadow: 2px 2px 2px #363636;
+ -webkit-box-shadow: 2px 2px 2px #363636;
+ -moz-box-shadow: 2px 2px 2px #363636;
+}
+
+.linha_separador {
+    
+height:2px; 
+border:none; 
+color:#C0C0C0; 
+background-color:#C0C0C0; 
+margin-top: 35px; 
+margin-bottom: 20px;
+}
+
+.linha_dashboard {
+    height: 2px;
+    border: none;
+    color: #C0C0C0;
+    background-color: #C0C0C0;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.linha_avaliacao {
+    height: 1px;
+    border: none;
+    color: #C0C0C0;
+    background-color: #C0C0C0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.linha-vertical {
+  height: 50px;/*Altura da linha*/
+  border-left: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
+}
+
+.container-smooth {
+    max-width: 1170px
+}
+
+
+#sel_produtos {
+ 
+    margin-top: 35px;
+}
+

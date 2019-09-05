@@ -1,0 +1,131 @@
+﻿@using Rafitec.Cloud.Portal.Dominio.Entidades
+@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Dominio.Entidades.Pedido
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Areas/Comercial/Views/Shared/_ComercialCadastroLayout.cshtml";
+}
+
+
+<div class="row pedido">
+
+    <div class="col-md-12 col-lg-12 col-xs-12">
+        <ul class="list-inline">
+            <li><a href="/Comercial/Pedido/Index">Consulta de Pedidos</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12 col-lg-12 col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Cadastro de Pedidos</h4>
+            </div>
+
+            <div class="panel-body">
+                 <form action="/Comercial/Pedido/Cadastro"  method="post" class="formModalResponse">
+                     <div class="row">
+
+
+                         @Html.AntiForgeryToken()
+
+                         <div class="col-md-12 form-group">
+                             <label>Cliente<span class="obrigatorio"> *</span></label>
+                             @Html.Raw(Html.EntidadeDropDownList<Entidade>("idEntidade", "RazaoSocial", "idCliente", e => (e.TipoEntidadeDb == "Cliente"), new { @class = "form-control input-50" }))
+                           
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Cliente Conta e Ordem</label>
+                             @Html.Raw(Html.EntidadeDropDownList<Entidade>("idEntidade", "RazaoSocial", "idCliente", e => (e.TipoEntidadeDb == "Cliente"), new { @class = "form-control input-50" }))                          
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Representante<span class="obrigatorio"> *</span></label>
+                             @if (Model.idRepresentante != null)
+                             {
+                                 @Html.Raw(Html.EntidadeDropDownList<Usuario>(Model.idRepresentante, "idUsuario", "Nome", "idRepresentante", u => (u.idEmpresaRepresentante != null), new { @class = "form-control input-50", disabled = "disabled" }));
+                             }
+                             else
+                             {
+                                @Html.Raw(Html.EntidadeDropDownList<Usuario>(Model.idRepresentante, "idUsuario", "Nome", "idRepresentante", u => (u.idEmpresaRepresentante != null), new { @class = "form-control input-50", disabled = "disabled" }));
+                             }
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Data Emissão</label>
+                             <input type="date" name="Datacadastramento" class="form-control input-20" value="@Model.DataEmissao.ToString("yyyy-MM-dd")" disabled />
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Cód. Pedido Empresa</label>
+                             @Html.TextBoxFor(model => Model.CodPedidoEmpresaProducao, new { @class = "form-control input-30" })
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Cód. Pedido Representante</label>
+                             @Html.TextBoxFor(model => Model.CodPedidoRepresentante, new { @class = "form-control input-30" })
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Cód. Pedido Cliente</label>
+                             @Html.TextBoxFor(model => Model.CodPedidoCliente, new { @class = "form-control input-30" })
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Forma Pagamento</label>
+                             @Html.EnumDropDownListFor(model => Model.FormaPagamento, new { @class = "form-control input-30" })
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Prazo<span class="obrigatorio"> *</span></label>
+                             <div class="row nopadding">
+                                 <div class="form-group col-md-1">
+                                     @Html.TextBoxFor(model => Model.PrazoPagamento1, new { @class = "form-control input-100 input-inline" })
+                                 </div>
+                                 <div class="form-group col-md-1">
+                                     @Html.TextBoxFor(model => Model.PrazoPagamento2, new { @class = "form-control input-100 input-inline" })
+                                 </div>
+                                 <div class="form-group col-md-1">
+                                     @Html.TextBoxFor(model => Model.PrazoPagamento3, new { @class = "form-control input-100 input-inline" })
+                                 </div>
+                                 <div class="form-group col-md-1">
+                                     @Html.TextBoxFor(model => Model.PrazoPagamento4, new { @class = "form-control input-100 input-inline" })
+                                 </div>
+                                 <div class="form-group col-md-1">
+                                     @Html.TextBoxFor(model => Model.PrazoPagamento5, new { @class = "form-control input-100 input-inline" })
+                                 </div>
+                                 <div class="form-group col-md-1">
+                                     @Html.TextBoxFor(model => Model.PrazoPagamento6, new { @class = "form-control input-100 input-inline" })
+                                 </div>
+
+                             </div>
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Frete<span class="obrigatorio"> *</span></label>
+                             @Html.EnumDropDownListFor(model => Model.Frete, new { @class = "form-control input-20" })
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Paletizado<span class="obrigatorio"> *</span></label>
+                             @Html.BoolDropDownList(null, "Paletizado", new Dictionary<string, string> { { "class", "form-control input-20" } })
+                         </div>
+
+                         <div class="col-md-12 form-group">
+                             <label>Observação<span class="obrigatorio"> *</span></label>
+                             @Html.TextAreaFor(model => model.Observacao, 5, 5, new {@class="form-control input-50"})
+                         </div>
+                         <div class="col-md-12 form-group">
+                             @Html.ButtonSalvar()
+                             @Html.ButtonCancelar("/Comercial/Pedido/Index")
+                         </div>
+
+                     </div>
+                 </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

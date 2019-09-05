@@ -1,0 +1,83 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@using Rafitec.Cloud.Portal.Web.Areas.Cadastro.Models.Filtro
+@model Rafitec.Cloud.Portal.Web.Models.BaseConsultaDefaultViewModel<Rafitec.Cloud.Portal.Dominio.Entidades.Produto>
+@*@model Rafitec.Cloud.Portal.Web.Areas.Cadastro.Models.ProdutoModelView*@
+
+@{
+    ViewBag.Title = "Consulta de Produto";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Dashboard/Index">Dashboard<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/Cadastro/Produto/Index">Consulta de Produtos</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading row">
+                <div class="col-md-9 col-lg-9 col-xs-9">
+                    <h4>Produtos</h4>      
+                </div>
+                <div class="col-md-3 col-lg-3 col-xs-3 text-right">
+                    @Html.ButtonFiltro()
+                    @Html.ButtonCadastro("/Cadastro/Produto/Cadastro", "Novo Produto") 
+                </div>
+            </div>
+            <div class="panel-body minimizar">
+                @Html.Partial("_Filtro", (FiltroProduto)Model.FiltroViewModel.Filtro)
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#id</th>
+                            <th>Descrição</th>
+                            <th>Status</th>
+                            <th class="text-center">-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var prop in Model.Lista)
+                        {
+                            <tr>
+                                <td>@prop.idProduto</td>
+                                <td>@prop.Descricao</td>
+                                <td>
+                                    @if (prop.Status == Rafitec.Cloud.Utils.Enums.Status.Ativo)
+                                    {
+                                        <p class="label label-success">Ativo</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="label label-danger">Inativo</p>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    @Html.ButtonEditar($"/Cadastro/Produto/Editar/{prop.idProduto}")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12 text-center">
+        @Html.PageLinks(Model.Paginacao, "/Cadastro/Produto/Index", Model.FiltroViewModel.Filtro)
+
+    </div>
+</div>
+

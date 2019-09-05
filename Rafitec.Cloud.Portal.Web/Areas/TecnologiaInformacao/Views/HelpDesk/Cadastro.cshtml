@@ -1,0 +1,105 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Dominio.Entidades.OsTi
+
+@{
+    ViewBag.Title = "Cadastro Chamados Ti";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Dashboard/Index">Dashboard<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/TecnologiaInformacao/HelpDesk/Index">Consulta de Chamados</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Cadastro Chamado Ti</h4>                
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                  <form action="~/TecnologiaInformacao/HelpDesk/Cadastro" method="post" class="formModalResponse">
+                      <div class="row">
+                          @Html.AntiForgeryToken()
+
+
+                          <div class="form-group col-md-12">
+                              <label>Título</label>
+                              @Html.TextBoxFor(model => model.Titulo, new { @class = "form-control input-100" })
+                          </div>
+
+                          <div class="form-group col-md-12">
+                              <label>Descrição Problema</label>
+                              @Html.TextAreaFor(model => model.Descricao, 5, 100, new { @class = "form-control input-100" })
+                          </div>
+
+                          <div class="form-group col-md-6">
+                              <label>Usuário Abertura</label>
+                              @Html.Raw(Html.EntidadeDropDownList<Rafitec.Cloud.Portal.Dominio.Entidades.Usuario>(Model.IdUsuario, "idUsuario", "Nome", "IdUsuario", new { @class = "form-control" }))
+                          </div>
+
+                          <div class="form-group col-md-6">
+                              <label>Setor</label>
+                              @Html.Raw(Html.EntidadeDropDownList<Rafitec.Cloud.Portal.Dominio.Entidades.Setor>(Model.IdSetor, "IdSetor", "Nome", "IdSetor", new { @class = "form-control" }))
+                          </div>
+
+
+                          <div class="form-group col-md-4">
+                              <label>Grupo</label>
+                              @Html.Raw(Html.EnumDropDownList<Rafitec.Cloud.Utils.Enums.GrupoOsTi>(Model.Grupo, "Grupo", Model.Grupo, new { @class = "form-control input-100"}))
+                          </div>
+
+                          <div class="form-group col-md-4">
+                              <label>Status</label>
+                              @Html.Raw(Html.EntidadeDropDownList<Rafitec.Cloud.Portal.Dominio.Entidades.OsStatus>(Model.IdStatus, "IdStatus", "Nome", "IdStatus", new { @class = "form-control"}))
+                          </div>
+
+                          <div class="form-group col-md-4">
+                              <label>Data Abertura</label>
+                              @Html.TextBoxFor(model => model.DataAbertura, new { @class = "form-control input-100" })
+                          </div>
+
+
+                          <div class="form-group col-md-4">
+                              <div class="panel panel-default col-md-12 no-padding">
+                                  <div class="panel-body">
+                                      <div class="col-md-12">
+                                          <label>Máquina Parada ?</label>
+                                      </div>
+
+                                      <div class="col-md-12 no-padding">
+                                          <div class="col-md-6 no-padding">
+                                              @Html.RadioButtonFor(model => model.MaquinaParada, true)
+                                              <label>Sim</label>
+                                          </div>
+                                          <div class="col-md-6 no-padding">
+                                              @Html.RadioButtonFor(model => model.MaquinaParada, false)
+                                              <label>Não</label>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                              </div>
+
+                          </div>
+                      </div>
+
+                      <div class="form-group col-md-12">
+                          @Html.ButtonSalvar()
+                          @Html.ButtonCancelar(Url.Action("Index", "HelpDesk", new { pagina = 1 }))
+                      </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

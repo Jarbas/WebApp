@@ -1,0 +1,44 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@using Rafitec.Cloud.Portal.Dominio.Entidades
+@model Rafitec.Cloud.Portal.Web.Areas.Comercial.Models.ClienteModelView
+
+
+<form id="form-filtro" action="~/Comercial/Cliente/Index" class="form-inline" method="get">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label>CNPJ/CPF</label>
+            @Html.TextBoxFor(model => Model.Filtro.CnpjCpf, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-8">
+            <label>Razão Social</label>
+            @Html.TextBoxFor(model => Model.Filtro.RazaoSocial, new { @class = "form-control" })
+        </div> 
+
+        <div class="form-group col-md-2">
+            <label>Tipo do Cliente</label>
+            @Html.EnumDropDownListFor(model => Model.Filtro.TipoCliente, "Selecione o Tipo Cliente", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-2">
+            <label>Status</label>
+            @Html.EnumDropDownListFor(model => Model.Filtro.Status, "Selecione o Status", new { @class = "form-control" })
+        </div>
+    
+         <div class="form-group col-md-8">
+             <label>Representante</label>
+             @{ 
+                 var result = Html.EntidadeDropDownList<Entidade>(Model.Filtro.idRepresentante, "idEntidade", "RazaoSocial", "Filtro.idRepresentante", e => (e.TipoEntidadeDb == "Representante"), new { @class ="form-control" } );
+                 @Html.Raw(result);
+              }
+         </div>   
+
+    </div>
+
+    <div class="form-group col-md-12">
+        @Html.ButtonSearch()
+        @Html.ButtonCancelar("/Comercial/Cliente/Index")
+    </div>
+
+    
+</form>

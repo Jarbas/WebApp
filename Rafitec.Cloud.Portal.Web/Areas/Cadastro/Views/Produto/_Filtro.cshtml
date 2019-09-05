@@ -1,0 +1,29 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@using Rafitec.Cloud.Utils.Enums
+@model Rafitec.Cloud.Portal.Web.Areas.Cadastro.Models.Filtro.FiltroProduto
+
+<form id="form-filtro" action="~/Cadastro/Produto/Index" method="get">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label>#id</label>
+            @Html.TextBoxFor(model => Model.Codigo, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-8">
+            <label>Descrição</label>
+            @Html.TextBoxFor(model => Model.Descricao, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Status</label>
+            @Html.Raw( @Html.EnumDropDownList<Status>(Model.Status, "Status", Model.Status, new { @class = "form-control" }) )
+        </div>
+
+        <div class="form-group col-md-9">
+            @Html.ButtonSearch()
+            @Html.ButtonCancelar("/Cadastro/Produto/Index")
+        </div>
+    </div>
+
+
+</form>

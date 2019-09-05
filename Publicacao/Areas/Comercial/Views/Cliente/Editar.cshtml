@@ -1,0 +1,185 @@
+﻿@using Rafitec.Cloud.Utils.Enums
+@using Rafitec.Cloud.Portal.Dominio.Entidades
+@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Dominio.Entidades.Entidade
+@{
+    ViewBag.Title = "Cadastro de Cliente";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Comercial/Cliente/Index">Consulta Clientes ></a></li>
+            <li><a href="/Comercial/Cliente/Editar/@Model.idEntidade">Editar Cliente</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5><b>Editar Cliente - @Model.RazaoSocial.ToString() </b></h5>
+            </div>
+
+            <div class="panel-body">
+                <form action="~/Comercial/Cliente/Editar" method="post" class="formModalResponse">
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group hidden">
+                        @Html.TextBoxFor(model => model.idEntidade, new { @class = "hidden"})
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pessoa</label><span class="obrigatorio"> *</span>
+                        @Html.Raw(Html.EnumDropDownList<EntidadePessoa>(Model.Pessoa, "Pessoa", Model.Pessoa, new { @class = "form-control input-10", id = "entidadePessoa", disabled = "disabled" }))
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cnpj/Cpf</label><span class="obrigatorio"> *</span>
+                        @Html.TextBoxFor(model => model.CnpjCpf, new { @class= "form-control input-30", id = "cnpjCpf", disabled = "disabled" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Razão Social</label><span class="obrigatorio"> *</span>
+                        @Html.TextBoxFor(model => model.RazaoSocial, new { @class = "form-control input-50", disabled = "disabled" })                    
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fantasia</label><span class="obrigatorio"> *</span>
+                        @Html.TextBoxFor(model => model.Fantasia, new { @class = "form-control input-50", disabled = "disabled" })                        
+                    </div>
+
+                    <div class="form-group">
+                        <label>Endereço</label><span class="obrigatorio"> *</span>
+                        @Html.TextBoxFor(model => model.Endereco, new { @class = "form-control input-50" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bairro</label><span class="obrigatorio"> *</span>
+                        @Html.TextBoxFor(model => model.Bairro, new { @class = "form-control input-50" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Complemento</label>
+                        @Html.TextBoxFor(model => model.EnderecoComplemento, new { @class = "form-control input-50" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Número</label>
+                        @Html.TextBoxFor(model => model.EnderecoNumero, new { @class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cep</label><span class="obrigatorio"> *</span>
+                        @Html.TextBoxFor(model => model.Cep, new { @class = "form-control input-30 cep" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>País</label><span class="obrigatorio"> *</span>
+                        <select class = "form-control input-30" id="idPais" name="idPais">
+                            <option value="@Model.idPais" selected ="selected">@Model.Pais.Nome</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estado</label><span class="obrigatorio"> *</span>
+                        <select id="idEstado" name="idEstado" class="form-control input-30" >
+                            <option value="@Model.idEstado" selected ="selected">@Model.UnidadeFederacao.Nome</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cidade</label><span class="obrigatorio"> *</span>
+                        <select id="idCidade" name="idCidade" class="form-control input-30">
+                            <option value="@Model.idCidade" selected="selected">@Model.Cidade.Nome</option>                            
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Inscrição Estadual/RG</label>
+                        @Html.TextBoxFor(model => model.InscricaoEstadual, new { @class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Inscrição Municipal</label>
+                        @Html.TextBoxFor(model => model.InscricaoMunicipal, new { @class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Inscrição Suframa</label>
+                        @Html.TextBoxFor(model => model.Suframa, new { @class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Inscrição Produto Rural</label>
+                        @Html.TextBoxFor(model => model.InscricaoProdutorRural, new { @class = "form-control input-30" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        @Html.TextBoxFor(model => model.Telefone, new { @class = "form-control telefone input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefone Ramal</label>
+                        @Html.TextBoxFor(model => model.TelefoneRamal, new { @class = "form-control telefone input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Celular</label>
+                        @Html.TextBoxFor(model => model.TelefoneCelular, new { @class = "form-control telefone input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Nfe</label>
+                        @Html.TextBoxFor(model => model.EmailNfe, new { @class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Web Page</label>
+                        @Html.TextBoxFor(model => model.HomePage, new { @class = "form-control input-30" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contato</label>
+                        @Html.TextBoxFor(model => model.Contato, new { @class = "form-control input-50" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Representante</label>
+                        @{
+                            var x = Html.EntidadeDropDownList<Entidade>(Model.idRepresentante, "idEntidade", "RazaoSocial", "idRepresentante", e => (e.TipoEntidadeDb == "Representante"), new { @class = "form-control input-50" });
+                            @Html.Raw(x);
+                        }
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo Do Cliente</label><span class="obrigatorio"> *</span>
+                        @Html.EnumDropDownListFor(model => model.TipoCliente, new { @class = "form-control input-20" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Data Cadastro</label><span class="obrigatorio"> *</span>
+                        <input type="date" name="Datacadastramento" class="form-control input-20" value="@Model.DataCadastramento.ToString("yyyy-MM-dd")" disabled /> 
+                    </div>  
+                    
+                    <div class="form-group">
+                        @Html.ButtonSalvar()
+                        @Html.ButtonCancelar($"/Comercial/Cliente/Editar/{Model.idEntidade}")
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+

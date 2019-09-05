@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Rafitec.Cloud.Portal.Dominio.Entidades.OrdemProducaoAcompanhamento>
+
+@{
+    ViewBag.TituloRelatorio = "Acompanhamento de Ordem Produção";
+    Layout = "~/Areas/Relatorio/Views/Shared/_LayoutRelatorioA4.cshtml";
+}
+
+<div class="row page">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Qtdade A Praduzir</th>
+                <th>Qtdade Produzida</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prop in Model)
+            {
+                <tr>
+                    <td>@prop.Numero</td>
+                    <td>@prop.QuantidadeProduzir @prop.UnidadeMedida.Abreviacao</td>
+                    <td>@prop.QuantidadeProduzida @prop.UnidadeMedida.Abreviacao</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>

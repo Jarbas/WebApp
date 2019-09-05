@@ -1,0 +1,84 @@
+﻿@model Rafitec.Cloud.Portal.Web.Areas.Admin.Models.UsuarioModelView
+
+@{ 
+    ViewBag.Title = "Cadastro de Usuário";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Dashboard/Index">Dashboard<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="~/Admin/Usuario/Index">Consulta de Usuários</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading row">
+                <div class="col-md-9 col-lg-9 col-xs-9 text-left">
+                    <h4 class="panel-title">Usuários</h4>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xs-3 text-right">
+                    <ul></ul>
+                    <button class="btn-minimizar btn btn-primary"><i class="glyphicon glyphicon-filter"></i> Filtrar</button>
+                    <a href="~/Admin/Usuario/Cadastro" class="btn btn-default"><i class="glyphicon glyphicon-plus-sign"></i> Novo Usuário</a>
+                </div>
+            </div>
+            <div class="panel-body minimizar">
+
+                @Html.Action("FiltroDefault", "Filtro", new { Area = "", action = "/Admin/Usuario/Index", filtro = Model.Filtro })
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#id</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Status</th>
+                            <th>-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var prop in Model.Usuarios)
+                        {
+                            <tr>
+                                <td>@prop.idUsuario</td>
+                                <td>@prop.Nome</td>
+                                <td>@prop.Email</td>
+                                <td>
+                                    @if (@prop.Status == Rafitec.Cloud.Utils.Enums.Status.Ativo)
+                                    {
+                                        <p class="label label-success">@prop.Status.ToString()</p>
+
+                                    }
+                                    else
+                                    {
+                                        <p class="label label-danger">@prop.Status.ToString()</p>
+                                    }
+                                </td>
+                                <td>
+                                    <a href="~/Admin/Usuario/Permissao/@prop.idUsuario" class="btn btn-primary btn-xs">Permissões</a>
+                                </td>
+
+
+                            </tr>
+                         }
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+

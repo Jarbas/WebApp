@@ -1,0 +1,77 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@using Rafitec.Cloud.Portal.Dominio.Entidades
+@model Rafitec.Cloud.Portal.Web.Areas.Comercial.Models.ClienteModelView
+@{
+    ViewBag.Title = "Cadastro de Clientes";
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="~/Comercial/Cliente/Index">Consulta de Clientes</a></li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading row">
+                <div class="col-md-9 col-lg-9 col-xs-9">
+                    <h4>Consulta de Clientes</h4>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xs-3 text-right">
+
+                    @Html.ButtonFiltro()
+                    @Html.ButtonCadastro("/Comercial/Cliente/Cadastro")
+                    <!--
+                    <button class="btn-minimizar btn btn-primary"><i class="glyphicon glyphicon-filter"></i> Filtrar</button>
+                    <a href="~/Comercial/Cliente/Cadastro" class="btn btn-default pull-right"><i class="glyphicon glyphicon-plus-sign"></i> Novo Cliente</a>-->
+                </div>
+            </div>
+            <div class="panel-body minimizar">
+              
+                 @Html.Partial("_Filtro", Model)    
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#Id</th>
+                            <th>Razão Social</th>
+                            <th>Cnpf/Cpf</th>
+                            <th class="text-center">-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model.Clientes)
+                        {
+                            <tr>
+                                <td>@c.idEntidade</td>
+                                <td>@c.RazaoSocial</td>
+                                <td>@c.CnpjCpf</td>
+                                <td class="text-center">
+                                    @Html.ButtonEditar($"/Comercial/Cliente/Editar/{c.idEntidade}")
+                                    <!--<a href="~/Comercial/Cliente/Editar/@c.idEntidade" class="btn btn-primary">Editar</a>-->
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 text-center">
+        @Html.PageLinks(Model.Paginacao, "/Comercial/Cliente/Index", Model.Filtro)
+    </div>
+
+</div>
+
+

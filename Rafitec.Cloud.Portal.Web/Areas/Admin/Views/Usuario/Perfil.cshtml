@@ -1,0 +1,110 @@
+﻿
+@model Rafitec.Cloud.Portal.Dominio.Entidades.Usuario
+
+@{
+    ViewBag.Title = Model.Nome + " " + Model.Sobrenome;
+    Layout = "~/Areas/Cadastro/Views/Shared/_CadastroLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li><a href="/Dashboard/Index">Dashboard<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            <li><a href="/Admin/Usuario/Perfil">Perfil</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4><b>Editar Perfil - @Model.Nome  @Model.Sobrenome </b></h4>
+            </div>
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Editar", "Usuario", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "formModalResponse" }))
+                {
+                      <div class="col-md-6">
+                          @Html.AntiForgeryToken()
+                          <div class="hidden">
+                              @Html.TextBoxFor(model => Model.idUsuario)
+                              @Html.TextBoxFor(model => Model.idEntidade)
+                          </div>
+
+                          <div class="form-group">
+                              @Html.Label("Nome", new { @class = "control-label" })
+                              @Html.TextBoxFor(model => Model.Nome, "", new { @class = "form-control input-80" })
+                          </div>
+
+                          <div class="form-group">
+                              @Html.Label("Sobrenome", new { @class = "control-label" })
+                              @Html.TextBoxFor(model => Model.Sobrenome, "", new { @class = "form-control input-80" })
+                          </div>
+
+                          <div class="form-group">
+                              @Html.Label("Email", new { @class = "control-label" })
+                              @Html.TextBoxFor(model => Model.Email, "", new { @class = "form-control input-100", disabled = "disabled" })
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#alteraSenha"><i class="glyphicon glyphicon glyphicon-lock"></i>  Alterar Senha</button>
+                          </div>
+
+                          <div class="form-group">
+                              <div style="position:relative;">
+                                  <label>Imagem</label>
+                      
+                                  <a class='btn' href='javascript:;'>
+                                      Selecione a imagem...
+                                      <input type="file" name="FormImagem" size="40" style="position:absolute;z-index:2;top:0; left:0;filter: alpha(opacity=0); 
+                                      opacity:0; background-color:transparent;color:transparent;" onchange='$("#upload-file-info").html($(this).val());'>
+                                  </a>
+
+                                  <span class='label label-info' id="upload-file-info"></span>
+                              </div>
+                              @if (Model.Imagem == null)
+                              {
+
+                                  <div class="form-control-static">Nenhuma imagem</div>
+                              }
+                              else
+                              {
+                                  <img class="img-thumbnail" width="120" height="120" src="@Url.Action("ObterImagem", "Usuario", new { Model.idUsuario })" />
+                              }
+                          </div>
+
+                      </div>
+
+                      <div class="col-md-10">
+                          <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                          <a class="btn btn-danger" href="/Dashboard/Index"><i class="glyphicon glyphicon-floppy-remove"></i> Cancelar</a>
+                      </div>
+
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="alteraSenha" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Alteração Senha</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Action("AlterarSenha", "Usuario")
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

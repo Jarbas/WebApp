@@ -1,0 +1,22 @@
+﻿@using Rafitec.Cloud.Portal.Web.HtmlHelpers
+@model Rafitec.Cloud.Portal.Web.Models.FiltroDefaultViewModel
+
+<form action="@Model.Action" method="get">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label>#id</label>
+            @Html.TextBoxFor(model => Model.Filtro.Codigo, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-8">
+            <label>Descrição</label>
+            @Html.TextBoxFor(model => Model.Filtro.Descricao, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-9">
+            @Html.ButtonSearch()
+            @Html.ButtonCancelar(@Model.Action)
+        </div>
+    </div>
+
+</form>

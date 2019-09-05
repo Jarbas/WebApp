@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Painel Principal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="portal-box">
+    <div class="panel panel-primary" style="margin-top:10px">
+        <div class="panel-heading">
+
+
+            <h3 class="panel-title">Painel Principal - Matheus Maroli </h3>
+        </div> <div class="panel-body">
+            @Html.Action("Detalhe", "Usuario", new { Area="Admin"})
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ops em produção</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ops</th>
+                                <th class="text-center">-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                               <td>00.50.000/01.01</td>
+                               <td>Produção</td>
+                           </tr>
+
+                            <tr>
+                                <td>00.50.000/01.02</td>
+                                <td>Produção</td>
+                            </tr>
+                            <tr>
+                                <td>00.50.000/01.03</td>
+                                <td>Produção</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 ">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pedidos</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Cód.</th>
+                                <th class="text-center">-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    51001
+                                </td>
+                                <td><a class="btn btn-primary">Detalhes</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

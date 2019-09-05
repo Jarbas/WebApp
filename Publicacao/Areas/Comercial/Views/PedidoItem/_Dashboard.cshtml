@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Rafitec.Cloud.Portal.Dominio.Entidades.PedidoItem>
+
+
+<table class="table" id="pedido-item">
+    <thead>
+        <tr>
+            <th>
+                Produto
+            </th>
+            <th>
+                IPI
+            </th>
+            <th>
+                % Comissão
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Valor Unitario
+            </th>
+            <th>
+                Total
+            </th>
+            <th class="text-center">
+                -
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var prop in Model)
+        {
+            var selected = "";
+            if (Model.First() == prop)
+            {
+                selected = "selected";
+            }
+            else
+            {
+                selected = "";
+            }
+             <tr class="pedido-item-row @selected.ToString()" id="@prop.idPedidoItem">
+                 <td>
+                     @prop.Produto.Descricao
+                 </td>
+                 <td>
+                     @prop.Ipi
+                 </td>
+                 <td>
+                     @prop.PercentualComissao
+                 </td>
+                 <td>
+                     @prop.Quantidade
+                 </td>
+                 <td>
+                     @prop.ValorUnitario
+                 </td>
+                 <td>
+                     @prop.Total
+                 </td>
+                 <td>
+                     <a class="btn btn-primary btn-xs" href="/Comercial/PedidoItem/Editar/@prop.idPedidoItem"><i class="glyphicon glyphicon-pencil"></i></a>
+                 </td>
+             </tr>
+        }
+    </tbody>
+
+
+</table>
