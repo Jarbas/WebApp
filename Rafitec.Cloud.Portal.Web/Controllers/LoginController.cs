@@ -52,15 +52,14 @@ namespace Rafitec.Cloud.Portal.Web.Controllers
         public ActionResult LoginCodigo(Usuario login)
         {
 
-            var teste = login.idUsuario;
-            CarregarUsuarioBancoDeDados(login);
+           CarregarCodigoUsuarioBancoDeDados(login);
             if (ExisteUsuarioBancoDeDados())
             {
-                if (ValidarSenha(login))
-                {
+              //  if (ValidarSenha(login))
+              //  {
                     AutenticarUsuario();
                     return RedirectToAction("App", "Dashboard");
-                }
+              //  }
             }
             CarregarViewBagErroLogin("Código Invalido");
             return Login();
@@ -119,15 +118,15 @@ namespace Rafitec.Cloud.Portal.Web.Controllers
         private void CarregarUsuarioBancoDeDados(Usuario usuario)
         {
              _repositorio = new Repositorio<Usuario>();
-            var useres = _repositorio.Get;
-            _usuarioDb = useres.FirstOrDefault(u => (u.Email == usuario.Email || u.Login == usuario.Email) && (u.Status == Status.Ativo));
+            var users = _repositorio.Get;
+            _usuarioDb = users.FirstOrDefault(u => (u.Email == usuario.Email || u.Login == usuario.Email) && (u.Status == Status.Ativo));
         }
 
         private void CarregarCodigoUsuarioBancoDeDados(Usuario usuario)
         {
             _repositorio = new Repositorio<Usuario>();
-            var users = _repositorio.Get;
-            _usuarioDb = users.FirstOrDefault(u => ((u.idUsuario == usuario.idUsuario)  && (u.Status == Status.Ativo)));
+            var users = _repositorio.GetMetodo(u => (u.idMatriculaSenior == usuario.idMatriculaSenior));
+            _usuarioDb = users.FirstOrDefault(u => ((u.idMatriculaSenior == usuario.idMatriculaSenior)  && (u.Status == Status.Ativo)));
         }
 
         [HttpGet]

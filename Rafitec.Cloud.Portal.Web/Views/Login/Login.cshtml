@@ -15,26 +15,26 @@
                     @Html.ValidationSummary();
                 <fieldset>
                     <div class="row">
-                        <div class="col-sm-12 col-md-10  col-md-offset-1">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="glyphicon glyphicon-user"> </i>
-                                    </span>
-                                    @Html.TextBoxFor(model => model.idUsuario, new { @class = "form-control", placeholder = "" })
-                                    @Html.ValidationMessageFor(model => model.idUsuario, "", new { @class = "text-danger" })
+                        <center>
+                            <p style="color: red; margin: auto">@ViewBag.ErroLogin</p>
+                        </center>
+                        <div class="col-md-12">
+
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"> </i>
+                                </span>
+                                @Html.TextBoxFor(model => model.idMatriculaSenior, new { @class = "form-control", @style = "max-width: 120px" })
+                                @Html.ValidationMessageFor(model => model.idMatriculaSenior, "", new { @class = "text-danger" })
+
+                                <div>
+                                    <button class="btn btn-primary" type="submit">ok</button>
                                 </div>
                             </div>
-                            <center>
-                                <p style="color: red; margin: auto">@ViewBag.ErroLogin</p>
-                            </center>
-
-                            <div class="row">
-                                <button class="btn btn-primary" type="submit">Acessar</button>
-                            </div>
+                          
                         </div>
                     </div>
-                </fieldset>
+</fieldset>
                 }
             </div>
         </div>

@@ -16,6 +16,7 @@ namespace Rafitec.Cloud.Portal.Dominio.Repositorio
            get { return _db.Set<T>().ToList(); } 
         }
 
+
         public IEnumerable<T> GetMetodo(Expression<Func<T, bool>> condicao)
         {
             return _db.Set<T>().Where(condicao).ToList();
